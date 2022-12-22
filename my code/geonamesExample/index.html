@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <title>HTML template | IT Career Switch</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="libs/css/bootstrap.min.css">
+        <link rel="stylesheet" href="libs/css/style.css">
+
+    </head>
+
+    <body>
+        <div class="header">
+           <h1> IT Career Switch </h1>
+        </div>
+
+        <div class="main">
+            <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Api Name</th>
+                    <th scope="col">Api Description</th>
+                    <!-- <th scope="col">Action</th> -->
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Streetname Lookup Webservice</th>
+                    <td>
+                        Returns a list of streets which start with the search term. <br>
+                        Url : api.geonames.org/streetNameLookup? <br>
+                        Parameters : q (query term, url encoded) <br>
+                        Restriction : this webservice is only available for selected countries, see list below.
+                        Result : returns a list of street names starting with the query term.
+                        Example
+                        http://api.geonames.org/streetNameLookupJSON?q=Museum&username=demo <br>
+                    Search: <input type="search" name="" id="queryStreet" >
+
+                    </td>
+                    <!-- <td>Thornton</td> -->
+                    <td><button id="btnPostCode">Fetch</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Timezone</th>
+                    <td>
+                        
+                        Webservice Type : REST <br>
+                        Url : api.geonames.org/timezone? <br>
+                        Parameters : lat,lng, radius (buffer in km for closest timezone in coastal areas), <br> lang (for countryName), date (date for sunrise/sunset) <br>
+                        Result : the timezone at the lat/lng with gmt offset (1. January) and dst offset (1. July) <br>
+                        <!-- Example http://api.geonames.org/timezone?lat=47.01&lng=10.2&username=demo -->
+
+                        This service is also available in JSON format : http://api.geonames.org/timezoneJSON?lat=47.01&lng=10.2&username=demo <br>
+                        only valid latitudes and longitudes should be input <br>
+                        latitude: <input type="number" min="-90" max="90" maxlength="2" name="latitude" id="latitude">
+                        longitude: <input type="number" min="-180" max="180" maxlength="4" name="longitude" id="longitude"> <br>
+                    </td>
+                    <!-- <td>the Bird</td> -->
+                    <td><button id="btnTimeZone">Fetch</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">getCountryInfo</th>
+                    <td>Loads Information for a specific country
+
+                        Webservice Type : REST <br>
+                        Url : api.geonames.org/countryInfo?<br>
+                        Parameters : country (default = all countries) <br>
+                        lang : ISO-639-1 language code (en,de,fr,it,es,...) (default = english) <br>
+                        Result : Country information : Capital, Population, Area in square km, Bounding Box of mainland (excluding offshore islands) <br>
+                        Example : http://api.geonames.org/countryInfo?username=demo <br>
+                        <select id="selCountry">
+                            <option value="GB">Great Britain</option>
+                            <option value="FR">France</option>
+                            <option value="DE">Germany</option>
+                            <option value="US">USA</option>
+                        </select>
+                
+                        <select id="selLanguage">
+                            <option value="en">English</option>
+                            <option value="fr">Francais</option>
+                            <option value="de">Deutsche</option>
+                        </select>
+                    </td>
+                    <!-- <td>Otto</td> -->
+                    <td><button id="btnRun">Fetch</button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+        </div>
+
+        <pre id="result">
+
+        </pre>
+
+        <div id="preloader">
+
+        </div>
+        <script src="libs/js/jquery-2.2.3.min.js"></script>
+        <script src="libs/js/bootstrap.min.js"></script>
+        <script src="libs/js/script.js"></script>
+    </body>
+</html>
